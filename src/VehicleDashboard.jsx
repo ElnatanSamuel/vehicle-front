@@ -10,6 +10,7 @@ const VehicleDashboard = () => {
     fetchVehicles();
   }, []);
 
+
   const fetchVehicles = async () => {
     try {
       const response = await axios.get('https://vehicle-back-lime.vercel.app/api/vehicles', {
