@@ -12,7 +12,7 @@ const VehicleDashboard = () => {
 
   const fetchVehicles = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/vehicles');
+      const response = await axios.get('https://vehicle-back-lime.vercel.app/api/vehicles');
       setVehicles(response.data);
     } catch (error) {
       console.error('Error fetching vehicles:', error);
@@ -22,7 +22,7 @@ const VehicleDashboard = () => {
   const handleAddVehicle = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/vehicles', newVehicle);
+      await axios.post('https://vehicle-back-lime.vercel.app/api/vehicles', newVehicle);
       setNewVehicle({ name: '', status: 'active' });
       setIsAddingVehicle(false);
       fetchVehicles();
@@ -33,7 +33,7 @@ const VehicleDashboard = () => {
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/vehicles/${id}`, {
+      await axios.put(`https://vehicle-back-lime.vercel.app/api/vehicles/${id}`, {
         status: newStatus
       });
       fetchVehicles();
