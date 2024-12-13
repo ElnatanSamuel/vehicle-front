@@ -13,7 +13,7 @@ const VehicleDashboard = () => {
 
   const fetchVehicles = async () => {
     try {
-      const response = await axios.get('https://vehicle-back-lime.vercel.app/api/vehicles', {
+      const response = await axios.get('https://backend-api-chi-two.vercel.app/api/vehicles', {
         withCredentials: true
       });
       setVehicles(response.data);
@@ -25,7 +25,7 @@ const VehicleDashboard = () => {
   const handleAddVehicle = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://vehicle-back-lime.vercel.app/api/vehicles', newVehicle, {
+      await axios.post('https://backend-api-chi-two.vercel.app/api/vehicles', newVehicle, {
         withCredentials: true
       });
       setNewVehicle({ name: '', status: 'active' });
@@ -39,7 +39,7 @@ const VehicleDashboard = () => {
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {
-      await axios.put(`https://vehicle-back-lime.vercel.app/api/vehicles/${id}`, {
+      await axios.put(`https://backend-api-chi-two.vercel.app/api/vehicles/${id}`, {
         status: newStatus
       }, {
         withCredentials: true
