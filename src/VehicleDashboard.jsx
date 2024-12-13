@@ -11,22 +11,24 @@ const VehicleDashboard = () => {
   }, []);
 
 
+  const API_URL = 'https://vehicle-back-ejwj.vercel.app';
+
   const fetchVehicles = async () => {
     try {
-      const response = await axios.get('https://vehicle-back-ejwj.vercel.app/api/vehicles', {
-        withCredentials: true
+      const response = await axios.get(`${API_URL}/api/vehicles`, {
+        withCredentials: false
       });
       setVehicles(response.data);
     } catch (error) {
       console.error('Error fetching vehicles:', error);
     }
   };
-
+  
   const handleAddVehicle = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://vehicle-back-ejwj.vercel.app/api/vehicles', newVehicle, {
-        withCredentials: true
+      await axios.post(`${API_URL}/api/vehicles`, newVehicle, {
+        withCredentials: false
       });
       setNewVehicle({ name: '', status: 'active' });
       setIsAddingVehicle(false);
@@ -36,13 +38,12 @@ const VehicleDashboard = () => {
     }
   };
   
-
   const handleUpdateStatus = async (id, newStatus) => {
     try {
-      await axios.put(`https://vehicle-back-ejwj.vercel.app/api/vehicles/${id}`, {
+      await axios.put(`${API_URL}/api/vehicles/${id}`, {
         status: newStatus
       }, {
-        withCredentials: true
+        withCredentials: false
       });
       fetchVehicles();
     } catch (error) {
